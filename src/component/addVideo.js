@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col, Button, Container} from 'react-bootstrap';
+import {Row, Col, Button, Container,Card,Form} from 'react-bootstrap';
 import VideoList from './videoList';
+import { bottom } from '@popperjs/core';
 
 export class AddVideo extends Component {
   constructor() {
@@ -17,9 +18,11 @@ export class AddVideo extends Component {
   render(){
     return(
     <Container><Row>
+        <Card style={{ width: '100%', margin:'10px' ,padding:'10px'}}>
+            <Form>
         <form onSubmit={this.addVideoId}>
           <label htmlFor="new-todo">
-            Video Id
+            Video Id   : 
           </label>
           <input
             id="new-todo"
@@ -28,7 +31,7 @@ export class AddVideo extends Component {
           />
           <br/>
           <label htmlFor="name">
-            Video Name
+            Video Name :
           </label>
           <input
             id="name"
@@ -36,15 +39,16 @@ export class AddVideo extends Component {
             value={this.state.name}
           />
           <br/>
-          <button>
-          <Button>
+          
+          <Button type='submit'>
             Add Video TO List
           </Button>
-          </button>
+          
         </form>
-        
+        </Form>
+        </Card>
         </Row>
-        <Row>
+        <Row style={{paddingLeft:'25px'}}>
           <VideoList videoList={this.state.items} onPlayClick={this.handlePlay} onRemove={this.removeVideo}/>
         </Row>
         </Container>
