@@ -7,16 +7,14 @@ class App extends Component {
   constructor() {
     super();
     this.state={videoId:'JJmcL1N2KQs'}
-  }
-
-  
+  };
 
   render() {
     return (
     <Container>
       <Row>
         <Col xs={6}>
-          <AddVideo />
+          <AddVideo videoPlay={this.OnNewVideoPlay}/>
         </Col>
         <Col xs={6}>
           <h1>Video </h1>
@@ -26,6 +24,12 @@ class App extends Component {
        </Row>
        </Container>
     );
+  }
+
+  OnNewVideoPlay = (id)=>{
+    this.setState(state=>({
+      videoId:id
+    }))
   }
 }
 

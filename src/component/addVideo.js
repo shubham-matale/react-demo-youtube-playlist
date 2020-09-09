@@ -45,7 +45,7 @@ export class AddVideo extends Component {
         
         </Row>
         <Row>
-          <VideoList videoList={this.state.items} />
+          <VideoList videoList={this.state.items} onPlayClick={this.handlePlay} onRemove={this.removeVideo}/>
         </Row>
         </Container>
         
@@ -53,8 +53,20 @@ export class AddVideo extends Component {
       
           )
   }
+
+  removeVideo = (index)=>{
+    let videoData = this.state.items;
+    console.log(videoData)
+    videoData.splice(index,1);
+    console.log('sdf',videoData);
+    this.setState( state=>({items:videoData}) );
+  }
   
- 
+  handlePlay = (id) => {
+    this.props.videoPlay(id)
+  }
+
+
   handleIdChange(e) {
     this.setState({ videoid: e.target.value });
   }
