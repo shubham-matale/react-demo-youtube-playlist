@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import AddVideo from './component/addVideo';
+import {Row, Col, Container} from 'react-bootstrap';
+class App extends Component {
+  constructor() {
+    super();
+    this.state={videoId:'JJmcL1N2KQs'}
+  }
+
+  
+
+  render() {
+    return (
+    <Container>
+      <Row>
+        <Col xs={6}>
+          <AddVideo />
+        </Col>
+        <Col xs={6}>
+          <h1>Video </h1>
+          <iframe width="600" height="424" src={'https://www.youtube.com/embed/'+this.state.videoId} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </Col>
+              
+       </Row>
+       </Container>
+    );
+  }
 }
 
 export default App;
